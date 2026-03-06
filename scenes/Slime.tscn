@@ -8,12 +8,14 @@ size = Vector2(92, 92)
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=815663614]
 contact_monitor = true
-max_contacts_reported = 1
+max_contacts_reported = 2
 script = ExtResource("1_2hd65")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1052452037]
+shape = SubResource("RectangleShape2D_1a61f")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1145233988]
+position = Vector2(0, -18)
 texture = ExtResource("2_wcugo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1052452037]
-position = Vector2(0, 18)
-shape = SubResource("RectangleShape2D_1a61f")
+[connection signal="body_entered" from="." to="." method="_on_FallArea_body_entered"]

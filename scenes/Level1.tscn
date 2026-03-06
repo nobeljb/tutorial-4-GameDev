@@ -3,9 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="1_bwv4p"]
 [ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="3_dw26h"]
-[ext_resource type="PackedScene" uid="uid://bl88ttjuayvmy" path="res://scenes/area_2d.tscn" id="4_lrl65"]
+[ext_resource type="PackedScene" uid="uid://bl88ttjuayvmy" path="res://scenes/Objective.tscn" id="4_lrl65"]
 [ext_resource type="PackedScene" uid="uid://dh2wadwn1m5n8" path="res://scenes/Fish.tscn" id="5_lrl65"]
 [ext_resource type="Script" uid="uid://bcbuyvgbgmt2m" path="res://scripts/Spawner.gd" id="6_76388"]
+[ext_resource type="PackedScene" uid="uid://joftk7aa4e80" path="res://scenes/Fall.tscn" id="7_svatc"]
+[ext_resource type="Script" uid="uid://c5nsjfjd5j7mt" path="res://scripts/Fall.gd" id="8_ecr63"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_odhdn"]
 texture = ExtResource("1_bwv4p")
@@ -75,3 +77,10 @@ sceneName = "Level2"
 position = Vector2(78, -184)
 script = ExtResource("6_76388")
 obstacle = ExtResource("5_lrl65")
+
+[node name="Area2D2" parent="." unique_id=762630537 instance=ExtResource("7_svatc")]
+position = Vector2(-55, 994)
+script = ExtResource("8_ecr63")
+sceneName = "LoseScreen"
+
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_FallArea_body_entered"]

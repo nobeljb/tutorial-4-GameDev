@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://joftk7aa4e80"]
+
+[ext_resource type="Script" uid="uid://b0ukokpre8yhi" path="res://scripts/WinArea.gd" id="1_muy8r"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_muy8r"]
+
+[node name="Area2D" type="Area2D" unique_id=1065776942]
+script = ExtResource("1_muy8r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=355251653]
+position = Vector2(105.25, -1.5)
+shape = SubResource("WorldBoundaryShape2D_muy8r")
+
+[connection signal="body_entered" from="." to="." method="_on_Area_Trigger_body_entered"]

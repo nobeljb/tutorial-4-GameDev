@@ -3,9 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="1_4p0dt"]
 [ext_resource type="Texture2D" uid="uid://cela4hnu06pql" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_stone.png" id="1_g8psw"]
 [ext_resource type="Script" uid="uid://dqkfgdmxjt63b" path="res://scripts/SpawnerSlime.gd" id="2_l6gr7"]
-[ext_resource type="PackedScene" uid="uid://bl88ttjuayvmy" path="res://scenes/area_2d.tscn" id="2_qwp14"]
+[ext_resource type="PackedScene" uid="uid://bl88ttjuayvmy" path="res://scenes/Objective.tscn" id="2_qwp14"]
 [ext_resource type="PackedScene" uid="uid://8kyflqnqle00" path="res://scenes/Slime.tscn" id="3_sp0w3"]
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="4_sp0w3"]
+[ext_resource type="PackedScene" uid="uid://joftk7aa4e80" path="res://scenes/Fall.tscn" id="7_xpq2v"]
+[ext_resource type="Script" uid="uid://c5nsjfjd5j7mt" path="res://scripts/Fall.gd" id="8_0jmjk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kkoku"]
 texture = ExtResource("1_g8psw")
@@ -54,6 +56,9 @@ sources/2 = SubResource("TileSetAtlasSource_kkoku")
 
 [node name="Node2D" type="Node2D" unique_id=474861531]
 
+[node name="Player" parent="." unique_id=2019289863 instance=ExtResource("4_sp0w3")]
+position = Vector2(-158, -143)
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1389206437]
 position = Vector2(185.00002, 500.00003)
 scale = Vector2(0.3936877, 0.3936877)
@@ -67,9 +72,19 @@ scale = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray("AAABAAAAAgAHAAEAAAACAAAAAgAHAAEAAAAAAAAAAgAHAAEAAAAAAAEAAgABAAAAAAABAAEAAgABAAAAAAACAAEAAgABAAAAAAADAAEAAgABAAAAAAAEAAEAAgABAAAAAAAEAAIAAgABAAAAAAAEAAMAAgABAAAAAAAEAAQAAgABAAAAAAADAAIAAgABAAAAAAADAAMAAgABAAAAAAADAAQAAgABAAAAAAACAAIAAgABAAAAAAACAAMAAgABAAAAAAACAAQAAgABAAAAAAABAAIAAgABAAAAAAAAAAIAAgABAAAAAAABAAMAAgABAAAAAAAFAAIAAgAHAAEAAAAGAAMAAgAHAAEAAAAHAAQAAgABAAAAAAAFAAQAAgABAAAAAAAFAAMAAgABAAAAAAAGAAQAAgABAAAAAAD+////AgAEAAAAAAD9////AgADAAAAAAACAAkAAgAHAAEAAAADAAkAAgAHAAEAAAAEAAkAAgAHAAEAAAAFAAkAAgAHAAEAAAAGAAkAAgAHAAEAAAAHAAoAAgAHAAEAAAA=")
 tile_set = SubResource("TileSet_l6gr7")
 
-[node name="Spawner" type="Node2D" parent="." unique_id=1328667578]
+[node name="Spawner2" type="Node2D" parent="." unique_id=1125735940]
+position = Vector2(0, -786)
 script = ExtResource("2_l6gr7")
 obstacle = ExtResource("3_sp0w3")
 
-[node name="Player" parent="." unique_id=2019289863 instance=ExtResource("4_sp0w3")]
-position = Vector2(-158, -143)
+[node name="Spawner" type="Node2D" parent="." unique_id=1328667578]
+position = Vector2(-162, 381)
+script = ExtResource("2_l6gr7")
+obstacle = ExtResource("3_sp0w3")
+
+[node name="Area2D2" parent="." unique_id=583290729 instance=ExtResource("7_xpq2v")]
+position = Vector2(-62, 1172)
+script = ExtResource("8_0jmjk")
+sceneName = "LoseScreen"
+
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_FallArea_body_entered"]
