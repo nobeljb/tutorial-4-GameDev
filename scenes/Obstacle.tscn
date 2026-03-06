@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dku8d3750vw3a"]
+
+[ext_resource type="PackedScene" uid="uid://dh2wadwn1m5n8" path="res://scenes/Fish.tscn" id="1_jde5u"]
+
+[node name="Node2D" type="Node2D" unique_id=1406831642]
+
+[node name="RigidBody2D" parent="." unique_id=1736112018 instance=ExtResource("1_jde5u")]

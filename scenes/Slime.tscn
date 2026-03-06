@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://8kyflqnqle00"]
+
+[ext_resource type="Script" uid="uid://bu2l8nl03cboh" path="res://scripts/Lose.gd" id="1_2hd65"]
+[ext_resource type="Texture2D" uid="uid://bs750pawoppvb" path="res://assets/kenney_platformerpack/PNG/Enemies/slimeBlock.png" id="2_wcugo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1a61f"]
+size = Vector2(92, 92)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=815663614]
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_2hd65")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1145233988]
+texture = ExtResource("2_wcugo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1052452037]
+position = Vector2(0, 18)
+shape = SubResource("RectangleShape2D_1a61f")
